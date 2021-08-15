@@ -1,27 +1,31 @@
-# AvaliacaoFront
+# avaliacao-cast-java
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.1.
+Aplicação angular 12
 
-## Development server
+## Iniciando a aplicação
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+clone o projeto e execute os comandos:
 
-## Code scaffolding
+```sh
+npm install
+ng serve
+```
+Sua aplicação sera iniciada no endereção: http://localhost:4200/
+Lembrese de estar com a API JAVA inciada
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Repositório da api: https://github.com/MaiconHenrique/avaliacao-cast/tree/master
 
-## Build
+## Funcionalidades:
+Temos duas abas no sistema uma para consultar os cursos e outra para incluir ou editar os cursos
+vamos incluir nosso primeiro curso
+![Alt text](/src/app/shared/img/Salvar.PNG?raw=true "Aqui vc pode incluir um curso")
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+logo depois podemos ver esse mesmo curso na aba de consulta:
 
-## Running unit tests
+![Alt text](/src/app/shared/img/home.PNG?raw=true "Aqui podemos editar ou excluir um curso")
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Caso voce deseje editar nao sera permitido alterar as datas dos curso como mostra na imagem:
 
-## Running end-to-end tests
+![Alt text](/src/app/shared/img/Editar.PNG?raw=true "Aqui podemos editar um curso")
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Pronto!
