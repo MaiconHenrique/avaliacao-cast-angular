@@ -1,4 +1,4 @@
-# avaliacao-cast-java
+# avaliacao-cast-angular
 
 Aplicação angular 12
 
