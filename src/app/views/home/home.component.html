@@ -1,0 +1,116 @@
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+        <span>Cadastrar Cursos</span>
+        <span class="example-spacer"></span>
+    </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-tab-group mat-align-tabs="center" [(selectedIndex)]=selectedIndex>
+    <mat-tab label="Visualizar cursos">
+        <div class="container">
+            <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+                <ng-container matColumnDef="position">
+                    <th mat-header-cell *matHeaderCellDef>Descrição do assunto</th>
+                    <td mat-cell *matCellDef="let element"> {{element.assunto}} </td>
+                </ng-container>
+                <ng-container matColumnDef="name">
+                    <th mat-header-cell *matHeaderCellDef>Data de início</th>
+                    <td mat-cell *matCellDef="let element"> {{element.datainicio | date: 'dd/MM/yyyy'}} </td>
+                </ng-container>
+                <ng-container matColumnDef="weight">
+                    <th mat-header-cell *matHeaderCellDef>Data de término</th>
+                    <td mat-cell *matCellDef="let element"> {{element.datatermino | date: 'dd/MM/yyyy'}} </td>
+                </ng-container>
+                <ng-container matColumnDef="symbol">
+                    <th mat-header-cell *matHeaderCellDef>Quantidade de alunos por turma</th>
+                    <td mat-cell *matCellDef="let element"> {{element.qtdalunos}} </td>
+                </ng-container>
+                <ng-container matColumnDef="buttonEdit">
+                    <th mat-header-cell *matHeaderCellDef></th>
+                    <td mat-cell *matCellDef="let element">
+                        <button mat-icon-button (click)="editar(element)">
+                            <mat-icon>border_color</mat-icon>
+                        </button>
+                    </td>
+                </ng-container>
+                <ng-container matColumnDef="delet">
+                    <th mat-header-cell *matHeaderCellDef></th>
+                    <td mat-cell *matCellDef="let element">
+                        <button mat-icon-button (click)="excluir(element.id)">
+                            <mat-icon>delete</mat-icon>
+                        </button>
+                    </td>
+                </ng-container>
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+        </div>
+    </mat-tab>
+    <mat-tab label="Incluir curso">
+        <div class="container">
+            <mat-card>
+                <form class="example-form" [formGroup]="cursoForm">
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Descrição do assunto</mat-label>
+                        <input matInput name="assunto" formControlName="assunto" />
+
+                    </mat-form-field>
+
+                    <table class="example-full-width" cellspacing="0">
+                        <tr>
+                            <td>
+                                <mat-form-field class="example-full-width" appearance="fill">
+                                    <mat-label>Data inicio</mat-label>
+                                    <input matInput [disabled]="dataDisabled" [matDatepicker]="inicio" formControlName="datainicio"
+                                        [min]="minDate" (dateChange)="onDateChange()">
+                                    <mat-datepicker-toggle matSuffix [for]="inicio">
+                                        <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+                                    </mat-datepicker-toggle>
+                                    <mat-datepicker #inicio></mat-datepicker>
+                                </mat-form-field>
+                            </td>
+                            <td>
+                                <mat-form-field class="example-full-width" appearance="fill">
+                                    <mat-label>Data termino</mat-label>
+                                    <input matInput [disabled]="dataDisabled" [matDatepicker]="termino" formControlName="datatermino"
+                                        [min]="minDateTermino">
+                                    <mat-datepicker-toggle matSuffix [for]="termino">
+                                        <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+                                    </mat-datepicker-toggle>
+                                    <mat-datepicker #termino></mat-datepicker>
+                                </mat-form-field>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <p>
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label>Categoria</mat-label>
+                            <mat-select disableRipple formControlName="categoria">
+                                <mat-option *ngFor="let cat of categorias" [value]="cat.codigo">{{ cat.descricao }}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </p>
+
+                    <table class="example-full-width" cellspacing="0">
+                        <tr>
+                            <td>
+                                <mat-form-field appearance="fill">
+                                    <mat-label>Quantidade de alunos</mat-label>
+                                    <input matInput formControlName="qtdalunos">
+                                </mat-form-field>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <div class="example-button-row">
+                        <button mat-raised-button (click)="cancelar()">Cancelar</button>
+                        <button mat-raised-button color="primary" (click)="incluir()">Incluir</button>
+                    </div>
+
+                </form>
+            </mat-card>
+        </div>
+    </mat-tab>
+</mat-tab-group>
