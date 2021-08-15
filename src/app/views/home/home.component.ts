@@ -55,9 +55,9 @@ export class HomeComponent implements OnInit {
   }
 
   onDateChange() {
+    this.cursoForm.controls['datatermino'].setValue('')
     let data = this.cursoForm.controls['datainicio'].value;
-    this.minDateTermino.setDate(data.getDate() + 1);
-    console.log(this.minDateTermino);
+    this.minDateTermino = new Date(data);
   }
 
   editar(element: any) {
@@ -87,6 +87,7 @@ export class HomeComponent implements OnInit {
             this.cursoForm.reset();
             this.selectedIndex = 0;
             this.init();
+            alert("Curso Incluido com sucesso");
           },
             (err) => { alert(err.error); })
         } else {
@@ -94,6 +95,7 @@ export class HomeComponent implements OnInit {
             this.cursoForm.reset();
             this.selectedIndex = 0;
             this.init();
+            alert("Curso Alterado com sucesso");
           },
             (err) => { alert(err.error); })
         }
