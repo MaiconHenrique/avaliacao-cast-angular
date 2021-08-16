@@ -17,7 +17,11 @@ Repositório da api: https://github.com/MaiconHenrique/avaliacao-cast/tree/maste
 
 ## Funcionalidades:
 Temos duas abas no sistema uma para consultar os cursos e outra para incluir ou editar os cursos
+
 vamos incluir nosso primeiro curso
+Quando incluimos um curso o sistema verifica se a data maior ou igual a data atual ou se não existe algum curso ja cadastrado no mesmo periodo
+caso sim exibe uma msg informando o usuário
+
 ![Alt text](/src/app/shared/img/Salvar.PNG?raw=true "Aqui vc pode incluir um curso")
 
 logo depois podemos ver esse mesmo curso na aba de consulta:
